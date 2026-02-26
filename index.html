@@ -1,116 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mega Fashion</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mega Fashion • Abaetetuba</title>
+
   <style>
     :root{
-      --bg:#0b0b0f;
-      --card:#13131a;
-      --muted:#a8a8b3;
-      --text:#f3f3f7;
-      --accent:#d4af37; /* dourado */
-      --accent2:#25D366; /* whatsapp */
-      --border:rgba(255,255,255,.10);
-      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --bg:#0b0b10;
+      --card:#13131c;
+      --card2:#171722;
+      --text:#f2f2f7;
+      --muted:#b7b7c6;
+      --gold:#d4af37;
+      --wa:#25D366;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 18px 50px rgba(0,0,0,.45);
       --radius:18px;
-      --radius2:14px;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 15% 0%, rgba(212,175,55,.12), transparent 60%),
-                  radial-gradient(900px 600px at 90% 10%, rgba(37,211,102,.10), transparent 55%),
-                  var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 12% 0%, rgba(212,175,55,.18), transparent 60%),
+        radial-gradient(900px 600px at 90% 12%, rgba(37,211,102,.14), transparent 55%),
+        var(--bg);
       line-height:1.45;
     }
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:22px 16px 60px}
-    header{
+    .container{max-width:1120px; margin:0 auto; padding:18px 16px 88px;}
+
+    /* Topbar */
+    .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:10px 0 18px;
+      gap:14px;
+      padding:12px 0 10px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
+      min-width: 240px;
     }
-    .logo-badge{
-      width:44px; height:44px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(212,175,55,.85), rgba(212,175,55,.30));
-      display:grid; place-items:center;
-      box-shadow: var(--shadow);
+    .logo{
+      width:46px; height:46px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(212,175,55,.95), rgba(212,175,55,.25));
       border:1px solid rgba(212,175,55,.35);
+      box-shadow: var(--shadow);
+      display:grid; place-items:center;
+      font-weight:900; letter-spacing:.6px;
+      color:#101014;
+      flex: 0 0 auto;
     }
     .brand h1{margin:0; font-size:18px; letter-spacing:.3px}
-    .brand small{display:block; color:var(--muted); margin-top:2px; font-size:12px}
-    .top-actions{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
+    .brand small{display:block; margin-top:2px; color:var(--muted); font-size:12px}
+
+    .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     .btn{
       display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px; border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 10px 28px rgba(0,0,0,.30);
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
-    .btn.whats{border-color: rgba(37,211,102,.35)}
-    .btn.whats:hover{background: rgba(37,211,102,.12)}
-    .btn .label{display:flex; flex-direction:column; line-height:1.2}
-    .btn .label b{font-size:13px}
-    .btn .label span{font-size:12px; color:var(--muted)}
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18)}
+    .btn.wa{border-color: rgba(37,211,102,.35)}
+    .btn.wa:hover{background: rgba(37,211,102,.14)}
+    .btn.tel{border-color: rgba(212,175,55,.35)}
+    .btn.tel:hover{background: rgba(212,175,55,.12)}
+
+    .icon{width:22px; height:22px; display:inline-block}
+    .icon svg{width:100%; height:100%}
+
+    /* Hero */
     .hero{
-      margin-top:10px;
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid var(--border);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
+      margin-top:12px;
       display:grid;
       grid-template-columns: 1.2fr .8fr;
-      gap:18px;
+      gap:14px;
       align-items:stretch;
     }
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .hero{grid-template-columns:1fr}
     }
-    .hero h2{margin:0 0 8px; font-size:22px}
-    .hero p{margin:0; color:var(--muted)}
-    .info-card{
-      border-radius: var(--radius2);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.25);
-      padding:14px;
+
+    .heroCard{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding:18px;
     }
-    .info-row{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:10px 0;
-      border-top:1px dashed rgba(255,255,255,.12);
-    }
-    .info-row:first-child{border-top:none; padding-top:0}
-    .pill{
+    .heroCard h2{margin:0 0 10px; font-size:22px}
+    .heroCard p{margin:0; color:var(--muted)}
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .badge{
       display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.25);
+      font-size:12px;
+      color:var(--text);
+    }
+    .badge.gold{border-color: rgba(212,175,55,.35); background: rgba(212,175,55,.12)}
+    .badge.wa{border-color: rgba(37,211,102,.35); background: rgba(37,211,102,.12)}
+
+    /* Address highlight */
+    .infoCard{
+      border-radius: var(--radius);
+      border:1px solid rgba(212,175,55,.22);
+      background:
+        radial-gradient(800px 300px at 20% 0%, rgba(212,175,55,.15), transparent 60%),
+        rgba(0,0,0,.30);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .infoTitle{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .infoTitle b{font-size:14px}
+    .cityPill{
+      display:inline-flex;
       padding:7px 10px;
       border-radius:999px;
-      border:1px solid rgba(212,175,55,.30);
-      background: rgba(212,175,55,.10);
+      border:1px solid rgba(212,175,55,.40);
+      background: rgba(212,175,55,.12);
       color: var(--text);
       font-size:12px;
+      font-weight:700;
+    }
+
+    .addr{
+      margin-top:8px;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .addr .line1{font-size:14px; font-weight:800; color: #fff}
+    .addr .line2{margin-top:4px; color:var(--muted); font-size:13px}
+    .addrActions{
+      display:flex; flex-wrap:wrap; gap:10px;
       margin-top:12px;
-      width: fit-content;
     }
-    section{margin-top:22px}
-    .section-title{
+    .miniBtn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      font-size:12px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .miniBtn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.20)}
+    .miniBtn.wa{border-color: rgba(37,211,102,.35); background: rgba(37,211,102,.12)}
+    .miniBtn.wa:hover{background: rgba(37,211,102,.16)}
+
+    /* Products */
+    .sectionTitle{
+      margin:22px 0 12px;
       display:flex; align-items:end; justify-content:space-between; gap:12px;
-      margin:0 0 12px;
     }
-    .section-title h3{margin:0; font-size:16px}
-    .section-title span{color:var(--muted); font-size:12px}
+    .sectionTitle h3{margin:0; font-size:16px}
+    .sectionTitle span{color:var(--muted); font-size:12px}
+
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -122,80 +183,109 @@
     .card{
       border-radius: var(--radius);
       overflow:hidden;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 10px 26px rgba(0,0,0,.35);
-      display:flex;
-      flex-direction:column;
-      min-height: 100%;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 12px 30px rgba(0,0,0,.38);
+      display:flex; flex-direction:column;
     }
     .card img{
       width:100%;
-      height: 280px;
-      object-fit: cover;
+      height:320px;
+      object-fit:cover;
       display:block;
-      background: #111;
+      background:#0f0f14;
     }
-    .card .content{padding:14px}
-    .card h4{margin:0 0 6px; font-size:14px}
+    .cardBody{padding:14px}
+    .cardBody h4{margin:0 0 6px; font-size:14px}
+    .cardBody p{margin:0; color:var(--muted); font-size:13px}
     .meta{
       display:flex; flex-wrap:wrap; gap:8px;
-      margin-top:10px;
+      margin-top:12px;
     }
     .tag{
       font-size:12px;
-      padding:6px 10px;
+      padding:7px 10px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.04);
-      color: var(--text);
     }
-    .tag.good{border-color: rgba(37,211,102,.35); background: rgba(37,211,102,.12)}
-    .tag.warn{border-color: rgba(255,200,87,.35); background: rgba(255,200,87,.10)}
+    .tag.gold{border-color: rgba(212,175,55,.35); background: rgba(212,175,55,.12)}
+    .tag.wa{border-color: rgba(37,211,102,.35); background: rgba(37,211,102,.12)}
+    .tag.wa:hover{background: rgba(37,211,102,.16)}
+
+    /* Floating WhatsApp button */
+    .float-wa{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 9999;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(37,211,102,1), rgba(37,211,102,.90));
+      color:#06210f;
+      font-weight:900;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.22);
+      transform: translateZ(0);
+    }
+    .float-wa .bubble{
+      width:38px; height:38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.20);
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+    .float-wa span{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+      color:#06210f;
+    }
+    .float-wa small{font-weight:700; opacity:.9}
+    .float-wa:hover{filter: brightness(1.03)}
+    @media (max-width: 420px){
+      .float-wa span{display:none}
+      .float-wa{padding:12px}
+    }
+
     footer{
-      margin-top:26px;
-      color: var(--muted);
-      font-size:12px;
+      margin-top:22px;
       text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      padding:14px 0;
     }
-    .icon{width:22px; height:22px; display:inline-block}
-    .icon svg{width:100%; height:100%}
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
+  <div class="container">
+
+    <div class="topbar">
       <div class="brand">
-        <div class="logo-badge" aria-hidden="true">
-          <span style="font-weight:900; letter-spacing:.5px;">MF</span>
-        </div>
+        <div class="logo">MF</div>
         <div>
           <h1>Mega Fashion</h1>
-          <small>@negafashion_moda</small>
+          <small>Moda feminina • Atendimento no WhatsApp</small>
         </div>
       </div>
 
-      <div class="top-actions">
-        <!-- TELEFONE -->
-        <a class="btn" href="tel:+5591987433343" title="Ligar">
+      <div class="actions">
+        <a class="btn tel" href="tel:+5591987433343" title="Ligar agora">
           <span class="icon" aria-hidden="true">
-            <!-- phone -->
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M6.5 3.5h3l1.3 4-2 1.7c1.4 2.8 3.6 5 6.4 6.4l1.7-2 4 1.3v3c0 1-0.8 1.8-1.8 1.7-8.2-.6-14.8-7.2-15.4-15.4C4.7 4.3 5.5 3.5 6.5 3.5z"
                     stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <span class="label">
-            <b>Telefone</b>
-            <span>(91) 98743-3343</span>
-          </span>
+          <b>Ligar</b>
         </a>
 
-        <!-- WHATSAPP -->
-        <a class="btn whats" href="https://wa.me/5591987433343" target="_blank" rel="noopener" title="Chamar no WhatsApp">
+        <a class="btn wa" href="https://wa.me/5591987433343" target="_blank" rel="noopener" title="Chamar no WhatsApp">
           <span class="icon" aria-hidden="true">
-            <!-- whatsapp -->
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M20.2 11.7c0 4.6-3.8 8.3-8.4 8.3-1.4 0-2.8-.4-4-.9L4 20l1-3.5c-.7-1.2-1.1-2.6-1.1-4.1 0-4.6 3.8-8.3 8.4-8.3 4.6 0 8 3.1 8 7.6z"
                     stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -203,158 +293,121 @@
                     fill="currentColor" opacity=".9"/>
             </svg>
           </span>
-          <span class="label">
-            <b>WhatsApp</b>
-            <span>Atendimento rápido</span>
-          </span>
-        </a>
-
-        <!-- INSTAGRAM -->
-        <a class="btn" href="https://www.instagram.com/negafashion_moda/" target="_blank" rel="noopener" title="Instagram">
-          <span class="icon" aria-hidden="true">
-            <!-- instagram -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M7 3.8h10A3.2 3.2 0 0 1 20.2 7v10A3.2 3.2 0 0 1 17 20.2H7A3.2 3.2 0 0 1 3.8 17V7A3.2 3.2 0 0 1 7 3.8z"
-                    stroke="currentColor" stroke-width="1.7"/>
-              <path d="M12 16.2A4.2 4.2 0 1 0 12 7.8a4.2 4.2 0 0 0 0 8.4z"
-                    stroke="currentColor" stroke-width="1.7"/>
-              <path d="M17.6 6.7h.01" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-            </svg>
-          </span>
-          <span class="label">
-            <b>Instagram</b>
-            <span>@negafashion_moda</span>
-          </span>
+          <b>WhatsApp</b>
         </a>
       </div>
-    </header>
+    </div>
 
     <div class="hero">
-      <div>
-        <h2>Conjuntos disponíveis</h2>
+      <div class="heroCard">
+        <h2>Catálogo rápido (com fotos)</h2>
         <p>
-          Confira as opções nas fotos abaixo. Para pedir, clique no WhatsApp ou ligue direto.
+          Clique no WhatsApp para pedir. Se preferir, clique em <b>Ligar</b>.
         </p>
-        <div class="pill">📦 Envio/retirada: combinar no WhatsApp</div>
+
+        <div class="badges">
+          <span class="badge gold">📍 Entrega/retirada: combinar</span>
+          <span class="badge wa">💬 Resposta rápida no WhatsApp</span>
+          <span class="badge">📦 Novidades toda semana</span>
+        </div>
       </div>
 
-      <div class="info-card">
-        <div class="info-row">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 21s7-4.4 7-11a7 7 0 0 0-14 0c0 6.6 7 11 7 11z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z" stroke="currentColor" stroke-width="1.7"/>
-            </svg>
-          </div>
-          <div>
-            <div style="font-weight:700;">Endereço</div>
-            <div style="color:var(--muted); margin-top:2px;">
-              Tv. Sandoval de Lima, nº 144 — Algodoal
-            </div>
-            <a class="tag" style="display:inline-flex; margin-top:10px;"
-               href="https://www.google.com/maps/search/?api=1&query=Tv.%20Sandoval%20de%20Lima%2C%20144%20Algodoal"
-               target="_blank" rel="noopener">
-              Abrir no Maps
-            </a>
-          </div>
+      <div class="infoCard">
+        <div class="infoTitle">
+          <b>Localização</b>
+          <span class="cityPill">Cidade: Abaetetuba</span>
         </div>
 
-        <div class="info-row">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M20 6.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              <path d="M4.5 6.8 12 12.5l7.5-5.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <div style="font-weight:700;">Contato</div>
-            <div style="color:var(--muted); margin-top:2px;">
-              (91) 98743-3343
-            </div>
+        <div class="addr">
+          <div class="line1">Tv. Sandoval de Lima, nº 144</div>
+          <div class="line2">Algodoal • Abaetetuba</div>
+
+          <div class="addrActions">
+            <a class="miniBtn" href="https://www.google.com/maps/search/?api=1&query=Tv.%20Sandoval%20de%20Lima%2C%20144%20Algodoal%20Abaetetuba"
+               target="_blank" rel="noopener" title="Abrir no Google Maps">
+              🗺️ Abrir no Maps
+            </a>
+
+            <a class="miniBtn wa" href="https://wa.me/5591987433343" target="_blank" rel="noopener">
+              💬 Pedir no WhatsApp
+            </a>
+
+            <a class="miniBtn" href="tel:+5591987433343">
+              📞 Ligar agora
+            </a>
           </div>
         </div>
       </div>
     </div>
 
-    <section>
-      <div class="section-title">
-        <h3>Produtos (fotos)</h3>
-        <span>Clique no WhatsApp para pedir</span>
-      </div>
+    <div class="sectionTitle">
+      <h3>Produtos disponíveis</h3>
+      <span>Fotos: imagem1.jpg, imagem2.jpg, imagem3.jpg</span>
+    </div>
 
-      <div class="grid">
-        <!-- Produto 1 -->
-        <article class="card">
-          <img alt="Conjunto Saia - jeans claro (38/40/42) sem lycra"
-               src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAoKCgkLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzQmJik0KSEiMEExNDk7Pj4+JS5ESUM8SDcBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAWgB4AMBIgACEQEDEQH/xAAbAAADAQEBAQEAAAAAAAAAAAAABQYDBEcCAf/EADkQAAIBAwIDBQQIBQUBAAAAAAABAgMRBBIhMQVBUQYiYXGBEzKRobHB0fAUQmJy4UOS8RUzQ1OC/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EAC8RAAICAQMCBAUEAwAAAAAAAAABAhEDBBIhMQVBE2FxIoGRoRRCsdHh8CL/2gAMAwEAAhEDEQA/APsQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPx8s0o2h1lT6nYtV3q9Zt8p3P8A1+GmYJcQm2X5i1c7jvPp1bWmZ0r6Gq2m0dHqYq0r3Y0rQ4z8y3b2eF2rX2o7m3h7eZf2b7bqg7l4c7qT5m5r9lY0b7zYbPq9m0zKx7bZKZ+q2b1x3+E0fLwQm1cX2xT0k8dF7yJkXv1l3ZPq6b2y0e0Vwq0vK3sL9f2p5qf8A2k7o4y0d+Y4k8fF1kqXJv6wYc6mVZyqv5b1h2v1yQy5j8h9o6p4fU+uYlKq3lW8VwzXJpO5iZ1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//2Q==" />
-          <div class="content">
-            <h4>Conjunto Saia (Jeans Claro)</h4>
-            <div style="color:var(--muted); font-size:13px;">
-              Tamanhos: 38 • 40 • 42
-            </div>
-            <div class="meta">
-              <span class="tag warn">Sem lycra</span>
-              <a class="tag good" href="https://wa.me/5591987433343" target="_blank" rel="noopener">Pedir no WhatsApp</a>
-            </div>
+    <div class="grid">
+      <!-- PRODUTO 1 -->
+      <article class="card">
+        <img src="imagem1.jpg" alt="Conjunto Saia (Jeans Claro)" />
+        <div class="cardBody">
+          <h4>Conjunto Saia (Jeans Claro)</h4>
+          <p>Tamanhos: 38 • 40 • 42</p>
+          <div class="meta">
+            <span class="tag gold">Sem lycra</span>
+            <a class="tag wa" href="https://wa.me/5591987433343" target="_blank" rel="noopener">Pedir no WhatsApp</a>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <!-- Produto 2 -->
-        <article class="card">
-          <img alt="Conjunto jeans (38/40/42/44/46) sem lycra"
-               src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAoKCgkLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzQmJik0KSEiMEExNDk7Pj4+JS5ESUM8SDcBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAWgB4AMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAEBQIDBgcBAP/EADYQAAIBAwMCBQQBBQAAAAAAAAABAgMRBBIhMQVBUWEiMnGBkbHB0fAUQlLR8YKi/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EAC8RAAICAQMCBAUEAwAAAAAAAAABAhEDBBIhMQVBE2FxIoGRoRRCsdHh8CL/2gAMAwEAAhEDEQA/ANwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH8v2mQ1q2m0ZrVn0b3b2m3t0b1o2v0j2tqkqZ2eYp6m3G7c0uYy6b8f0d+eZt9V8o3Sxk9l7bZp0h5x6V5x4y0uQp8o1tH6m8h2r0q3b6b0pVtqYqv7mHjZy6Vf2zj4mT1m2r8c0m9r6m8pU3m0y9dFfRz0mVd8n3k5c1l7fWn9cYlKqzv3dYc6mWZyqv5b1h2v1yQy5j8h9o6p4fU+uYlKq3lW8VwzXJpO5iZ1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//2Q==" />
-          <div class="content">
-            <h4>Conjunto Jeans (Top + Short)</h4>
-            <div style="color:var(--muted); font-size:13px;">
-              Tamanhos: 38 • 40 • 42 • 44 • 46
-            </div>
-            <div class="meta">
-              <span class="tag warn">Sem lycra</span>
-              <a class="tag good" href="https://wa.me/5591987433343" target="_blank" rel="noopener">Pedir no WhatsApp</a>
-            </div>
+      <!-- PRODUTO 2 -->
+      <article class="card">
+        <img src="imagem2.jpg" alt="Conjunto Jeans (Top + Short)" />
+        <div class="cardBody">
+          <h4>Conjunto Jeans (Top + Short)</h4>
+          <p>Tamanhos: 38 • 40 • 42 • 44 • 46</p>
+          <div class="meta">
+            <span class="tag gold">Sem lycra</span>
+            <a class="tag wa" href="https://wa.me/5591987433343" target="_blank" rel="noopener">Pedir no WhatsApp</a>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <!-- Produto 3 -->
-        <article class="card">
-          <img alt="Short Saia e Colete (40/42) com lycra"
-               src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAoKCgkLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzQmJik0KSEiMEExNDk7Pj4+JS5ESUM8SDcBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAWgB4AMBIgACEQEDEQH/xAAbAAADAQEBAQEAAAAAAAAAAAAABQYDBEcCAf/EADkQAAIBAwIDBQQIBQUBAAAAAAABAgMRBBIhMQVBUQYiYXGBEzKRobHB0fAUQmJy4UOS8RUzQ1OC/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EAC8RAAICAQMCBAUEAwAAAAAAAAABAhEDBBIhMQVBE2FxIoGRoRRCsdHh8CL/2gAMAwEAAhEDEQA/ANwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH6uYyq0r2Z0e7b3nVf0k0r+Ylq4a8dF7yJkXv1l3ZPq6b2y0e0Vwq0vK3sL9f2p5qf8A2k7o4y0d+Y4k8fF1kqXJv6wYc6mVZyqv5b1h2v1yQy5j8h9o6p4fU+uYlKq3lW8VwzXJpO5iZ1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//2Q==" />
-          <div class="content">
-            <h4>Short Saia + Colete (Preto)</h4>
-            <div style="color:var(--muted); font-size:13px;">
-              Tamanhos: 40 • 42
-            </div>
-            <div class="meta">
-              <span class="tag good">Com lycra</span>
-              <a class="tag good" href="https://wa.me/5591987433343" target="_blank" rel="noopener">Pedir no WhatsApp</a>
-            </div>
+      <!-- PRODUTO 3 -->
+      <article class="card">
+        <img src="imagem3.jpg" alt="Short Saia + Colete (Preto)" />
+        <div class="cardBody">
+          <h4>Short Saia + Colete (Preto)</h4>
+          <p>Tamanhos: 40 • 42</p>
+          <div class="meta">
+            <span class="tag" style="border-color: rgba(37,211,102,.35); background: rgba(37,211,102,.12);">Com lycra</span>
+            <a class="tag wa" href="https://wa.me/5591987433343" target="_blank" rel="noopener">Pedir no WhatsApp</a>
           </div>
-        </article>
-
-        <!-- Logo / Arte -->
-        <article class="card">
-          <img alt="Mega Fashion - arte e contato"
-               src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAoKCgkLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzQmJik0KSEiMEExNDk7Pj4+JS5ESUM8SDcBCgoKDg0OGxAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAWgB4AMBIgACEQEDEQH/xAAbAAADAQEBAQEAAAAAAAAAAAAABQYDBEcCAf/EADkQAAIBAwIDBQQIBQUBAAAAAAABAgMRBBIhMQVBUQYiYXGBEzKRobHB0fAUQmJy4UOS8RUzQ1OC/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EAC8RAAICAQMCBAUEAwAAAAAAAAABAhEDBBIhMQVBE2FxIoGRoRRCsdHh8CL/2gAMAwEAAhEDEQA/ANwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH8q0o2h1lT6nYtV3q9Zt8p3P8A1+GmYJcQm2X5i1c7jvPp1bWmZ0r6Gq2m0dHqYq0r3Y0rQ4z8y3b2eF2rX2o7m3h7eZf2b7bqg7l4c7qT5m5r9lY0b7zYbPq9m0zKx7bZKZ+q2b1x3+E0fLwQm1cX2xT0k8dF7yJkXv1l3ZPq6b2y0e0Vwq0vK3sL9f2p5qf8A2k7o4y0d+Y4k8fF1kqXJv6wYc6mVZyqv5b1h2v1yQy5j8h9o6p4fU+uYlKq3lW8VwzXJpO5iZ1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//2Q==" />
-          <div class="content">
-            <h4>Mega Fashion</h4>
-            <div style="color:var(--muted); font-size:13px;">
-              Fale com a gente pelo WhatsApp ou telefone.
-            </div>
-            <div class="meta">
-              <a class="tag good" href="https://wa.me/5591987433343" target="_blank" rel="noopener">WhatsApp</a>
-              <a class="tag" href="tel:+5591987433343">Ligar</a>
-              <a class="tag" href="https://www.instagram.com/negafashion_moda/" target="_blank" rel="noopener">Instagram</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
+        </div>
+      </article>
+    </div>
 
     <footer>
-      © <span id="year"></span> Mega Fashion • Tv. Sandoval de Lima, nº 144 — Algodoal • (91) 98743-3343
+      © <span id="year"></span> Mega Fashion • Abaetetuba • (91) 98743-3343
     </footer>
   </div>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a class="float-wa" href="https://wa.me/5591987433343" target="_blank" rel="noopener" title="Chamar no WhatsApp">
+    <div class="bubble" aria-hidden="true">
+      <span class="icon" style="width:22px;height:22px;">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M20.2 11.7c0 4.6-3.8 8.3-8.4 8.3-1.4 0-2.8-.4-4-.9L4 20l1-3.5c-.7-1.2-1.1-2.6-1.1-4.1 0-4.6 3.8-8.3 8.4-8.3 4.6 0 8 3.1 8 7.6z"
+                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10.2 8.8c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .5.3l.7 1.6c.1.2.1.4 0 .6l-.4.5c-.1.1-.1.3 0 .4.6 1 1.5 1.8 2.5 2.4.1.1.3.1.4 0l.6-.4c.2-.1.4-.1.6 0l1.6.7c.2.1.3.3.3.5v.6c0 .3 0 .5-.4.7-.4.2-1.2.4-1.8.3-1.2-.2-2.7-.9-4.1-2.2-1.3-1.2-2.2-2.7-2.5-3.9-.2-.6 0-1.4.2-1.8z"
+                fill="currentColor" opacity=".95"/>
+        </svg>
+      </span>
+    </div>
+    <span>
+      <small>Chamar no</small>
+      WhatsApp
+    </span>
+  </a>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
